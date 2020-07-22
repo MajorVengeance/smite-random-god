@@ -1,0 +1,20 @@
+{
+  "name": "smite-random-god",
+  "version": "1.0.0",
+  "description": "A random god generator for smite",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ben Martin",
+  "license": "MIT",
+  "keywords": [
+    "discord",
+    "smite god",
+    "bot"
+  ],
+  "dependencies": {
+    "axios": "^0.19.2",
+    "discord.js": "^12.2.0"
+  }
+}
