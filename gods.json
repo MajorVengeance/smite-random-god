@@ -331,7 +331,7 @@
     "id": 42,
     "name": "Zhong Kui",
     "class": "Mage",
-    "damage": "Physical",
+    "damage": "Magical",
     "range": "Ranged",
     "pantheon": "Chinese"
   },
@@ -873,7 +873,7 @@
   },
   {
     "id": 110,
-    "name": "Cthulu",
+    "name": "Cthulhu",
     "class": "Guardian",
     "damage": "Magical",
     "range": "Melee",

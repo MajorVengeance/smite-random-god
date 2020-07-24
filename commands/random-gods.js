@@ -34,6 +34,11 @@ module.exports = {
 			randomPool = randomPool.filter(god => argumentObj.range.includes(god.range.toLowerCase()));
 		}
 
+		if (!randomPool.length || randomPool.length == 0) {
+			msg.reply('your chosen filters have resulted in 0 gods being available. Please change your filters.');
+			return;
+		}
+
 		console.log(JSON.stringify(randomPool));
 		const randomIndex = Math.floor((Math.random() * randomPool.length));
 		console.log(randomIndex);
