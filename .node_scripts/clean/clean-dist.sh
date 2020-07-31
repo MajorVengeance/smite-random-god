@@ -1,2 +1,1 @@
-rm -r dist
-mkdir dist
+rm -r dist/*
