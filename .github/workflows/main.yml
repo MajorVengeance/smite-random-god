@@ -29,7 +29,8 @@ jobs:
         node-version: '12'
     
     # Clean the dist folder before going on
-    - run: |
+    - name: Clean dist
+      run: |
         if [[ ! -e dist ]]; then
           mkdir dist
         else 
