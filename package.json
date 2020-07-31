@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": ".node_scripts/clean/clean-dist",
-    "build": ".node_scripts/build/build",
+    "build": "sudo .node_scripts/build/build",
     "test": "echo \"Error: no test specified\" && return 0"
   },
   "author": "Ben Martin",
