@@ -22,13 +22,15 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    # Build the repo
-    - name: Build with Nodejs
+    # Setup node
+    - name: Set up Nodejs
       uses: actions/setup-node@v2
       with:
         node-version: '12'
         check-latest: true
-      run: npm install
+    
+    # Run npm install
+    - run: npm install
 
     # Runs a set of commands using the runners shell
     - name: Run a multi-line script
