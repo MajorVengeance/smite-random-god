@@ -27,11 +27,18 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '12'
-        check-latest: true
     
     # Run npm install
-    - run: npm install
+    - run: | 
+      npm install
+      npm run build --if-present
 
+    # Upload build artifact
+    - uses: actions/upload-artifact@v2
+      with:
+        name: dist
+        path: dist
+    
     # Runs a set of commands using the runners shell
     - name: Run a multi-line script
       run: |
