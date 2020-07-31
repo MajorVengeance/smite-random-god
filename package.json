@@ -4,7 +4,7 @@
   "description": "A random god generator for smite",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && return true"
+    "test": "echo \"Error: no test specified\" && return 0"
   },
   "author": "Ben Martin",
   "license": "MIT",
