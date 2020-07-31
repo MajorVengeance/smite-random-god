@@ -29,7 +29,12 @@ jobs:
         node-version: '12'
     
     # Clean the dist folder before going on
-    - run: rm -r dist/*
+    - run: |
+        if [[ ! -e dist ]]; then
+          mkdir dist
+        else 
+          rm -r dist/*
+        fi
 
     # Run npm install
     - name: npm install, build, and test
