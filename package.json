@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "clean": ".node_scripts/clean/clean-dist",
-    "prebuild": "npm run clean -s",
     "build": ".node_scripts/build/build",
     "test": "echo \"Error: no test specified\" && return 0"
   },
