@@ -43,16 +43,3 @@ jobs:
         npm install
         npm run build --if-present
         npm test
-
-    - name: Variable Substitution
-      uses: microsoft/variable-substitution@v1
-      with:
-        files: 'dist/config.json'
-      env:
-        token: ${{ secrets.TOKEN }}
-
-    # Upload build artifact
-    - uses: actions/upload-artifact@v2
-      with:
-        name: dist
-        path: dist
