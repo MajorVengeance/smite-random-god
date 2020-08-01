@@ -1,4 +1,4 @@
-name: Manually triggered workflow
+name: Manual Deploy
 on:
   workflow_dispatch:
     branches:
