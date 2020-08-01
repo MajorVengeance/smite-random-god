@@ -8,60 +8,67 @@ module.exports = {
 	usage: '[command filters]',
 	list: require('../gods.json'),
 	execute(msg, args) {
-		const argumentString = args.join(' ').toLowerCase();
-		const argumentArr = argumentString.slice().split('-');
-		if (argumentArr[0] == '') argumentArr.shift();
-		const argumentMatrix = argumentArr.map(createMatrixArrays);
-		const argumentObj = {};
-		for(const x of argumentMatrix) {
-			if(x == '') break;
-			const paramName = x.shift().toLowerCase();
-			argumentObj[paramName] = x;
-		}
+		try {
+			const argumentString = args.join(' ').toLowerCase();
+			const argumentArr = argumentString.slice().split('-');
+			if (argumentArr[0] == '') argumentArr.shift();
+			const argumentMatrix = argumentArr.map(this.createMatrixArrays);
+			const argumentObj = {};
+			for (const x of argumentMatrix) {
+				if (x == '') break;
+				const paramName = x.shift().toLowerCase();
+				argumentObj[paramName] = x;
+			}
 
+			const chosenGod = this.selectRandomGod(argumentObj);
+			const imageURL = `https://smitefire.com/images/god/icon/${chosenGod.name.replace(' ', '-').replace('\'', '')}.png`;
+			// console.log(imageURL);
+			const colors = { Assassin: '#E5A900', Guardian: '#5A8210', Hunter: '#BD4900', Mage: '#A520A5', Warrior: '#C0250D' };
+			const reply = new Discord.MessageEmbed()
+				.setTitle('Here\'s your god!')
+				.setColor(colors[chosenGod.class])
+				.addFields(
+					{ name: 'Name', value: chosenGod.name },
+					{ name: 'Class', value: chosenGod.class },
+					{ name: 'Pantheon', value: chosenGod.pantheon },
+				)
+				.setThumbnail(imageURL);
+			msg.reply(reply);
+		}
+		catch (e) {
+			msg.reply(e);
+		}
+	},
+	selectRandomGod(argumentObj) {
 		let randomPool = new Array();
 		randomPool = this.list;
-		if(argumentObj.pantheon) {
-			randomPool = randomPool.filter(god=> argumentObj.pantheon.includes(god.pantheon.toLowerCase()));
+		if (argumentObj.pantheon) {
+			randomPool = randomPool.filter(god => argumentObj.pantheon.includes(god.pantheon.toLowerCase()));
 		}
-		if(argumentObj.class) {
+		if (argumentObj.class) {
 			randomPool = randomPool.filter(god => argumentObj.class.includes(god.class.toLowerCase()));
 		}
-		if(argumentObj.damage) {
+		if (argumentObj.damage) {
 			randomPool = randomPool.filter(god => argumentObj.damage.includes(god.damage.toLowerCase()));
 		}
-		if(argumentObj.range) {
+		if (argumentObj.range) {
 			randomPool = randomPool.filter(god => argumentObj.range.includes(god.range.toLowerCase()));
 		}
 
 		if (!randomPool.length || randomPool.length == 0) {
-			msg.reply('your chosen filters have resulted in 0 gods being available. Please change your filters.');
-			return;
+			throw 'your chosen filters have resulted in 0 gods being available. Please change your filters.';
 		}
 
-		console.log(JSON.stringify(randomPool));
+		// console.log(JSON.stringify(randomPool));
 		const randomIndex = Math.floor((Math.random() * randomPool.length));
-		console.log(randomIndex);
+		// console.log(randomIndex);
 		const chosenGod = randomPool[randomIndex];
-		console.log(JSON.stringify(chosenGod));
-		const imageURL = `https://smitefire.com/images/god/icon/${chosenGod.name.replace(' ', '-').replace('\'', '')}.png`;
-		console.log(imageURL);
-		const colors = { Assassin: '#E5A900', Guardian: '#5A8210', Hunter: '#BD4900', Mage: '#A520A5', Warrior: '#C0250D' };
-		const reply = new Discord.MessageEmbed()
-			.setTitle('Here\'s your god!')
-			.setColor(colors[chosenGod.class])
-			.addFields(
-				{ name: 'Name', value: chosenGod.name },
-				{ name: 'Class', value: chosenGod.class },
-				{ name: 'Pantheon', value: chosenGod.pantheon },
-			)
-			.setThumbnail(imageURL);
-		msg.reply(reply);
+		// console.log(JSON.stringify(chosenGod));
+		return chosenGod;
+	},
+	createMatrixArrays(item) {
+		const newArray = item.split(' ');
+		newArray.forEach(a => a.toLowerCase());
+		return newArray;
 	},
 };
-
-function createMatrixArrays(item) {
-	const newArray = item.split(' ');
-	newArray.forEach(a => a.toLowerCase());
-	return newArray;
-}

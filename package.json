@@ -4,7 +4,12 @@
   "description": "A random god generator for smite",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": ".node_scripts/clean/clean-dist",
+    "build": "cp config.json dist/config.json && cp gods.json dist/gods.json && cp package.json dist/package.json && cp index.js dist/index.js && cp -r commands dist/commands && cp -r data dist/data && cp -r node_modules dist/node_modules",
+    "test": "mocha"
+  },
+  "directories": {
+    "test" : "test"
   },
   "author": "Ben Martin",
   "license": "MIT",
@@ -18,5 +23,9 @@
     "better-sqlite3": "^7.1.0",
     "discord.js": "^12.2.0",
     "enmap": "^5.4.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.1.0"
   }
 }
