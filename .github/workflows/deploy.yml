@@ -59,12 +59,10 @@ jobs:
         name: deploy_artifact
         path: dist
     - name: Upload via FTP
-      uses: isthatcentered/dist-to-ftp@master
+      uses: sebastianpopp/ftp-action@releases/v2
       with:
         user: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
         host: ${{ secrets.FTP_HOST }}
-        port: ${{ secrets.FTP_PORT }}
-        path: dist
-        into: /files/discord-bots/smite-random-god/
-        cleanupExisting: true
+        localDir: 'dist'
+        remoteDir: '/files/discord-bots/smite-random-god/'
