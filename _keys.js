@@ -1,1 +1,0 @@
-module.exports.key = 'NzE4NjA5MjE3OTkyMjYxNjQz.Xtugxw.t0dL5nIuAq_sOD6IMuPvgVm501I';
