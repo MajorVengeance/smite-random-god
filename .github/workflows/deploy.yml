@@ -59,11 +59,9 @@ jobs:
         name: deploy_artifact
         path: dist
     - name: Upload via FTP
-      uses: kevinpainchaud/simple-ftp-deploy-action@v1.1.0
+      uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
         ftp_username: ${{ secrets.FTP_USER }}
         ftp_password: ${{ secrets.FTP_PASSWORD }}
         ftp_host: ${{ secrets.FTP_HOST }}
-        local_source_dir: 'dist'
-        dist_target_dir: '/files/discord-bots/smite-random-god/'
-        delete: true
+        local-dir: 'dist'
