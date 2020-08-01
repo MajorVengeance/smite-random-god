@@ -49,7 +49,7 @@ jobs:
       with:
         files: 'dist/config.json'
       env:
-        Var1: 'Token'
+        Var1: 'token'
         SECRET: ${{ secrets.TOKEN }}
 
     # Upload build artifact
