@@ -59,9 +59,12 @@ jobs:
         name: deploy_artifact
         path: dist
     - name: Upload via FTP
-      uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      uses: MajorVengeance/Ftp-Deploy-Action@v0.1-alpha
       with:
-        ftp-server: ${{ secrets.FTP_HOST }}
-        ftp-username: ${{ secrets.FTP_USER }}
-        ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: 'dist'
+        ftp_host: ${{ secrets.FTP_HOST }}
+        ftp_port: ${{ secrets.FTP_PORT }}
+        ftp_username: ${{ secrets.FTP_USER }}
+        ftp_password: ${{ secrets.FTP_PASSWORD }}
+        local_source_dir: 'dist'
+        dist_target_dir: ${{ secrets.FTP_Target }}
+        delete: true
