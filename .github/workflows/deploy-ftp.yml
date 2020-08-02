@@ -59,7 +59,7 @@ jobs:
         name: deploy_artifact
         path: dist
     - name: Upload via FTP
-      uses: MajorVengeance/Ftp-Deploy-Action@v0.1-alpha
+      uses: MajorVengeance/Ftp-Deploy-Action@v0.2-alpha
       with:
         ftp_host: ${{ secrets.FTP_HOST }}
         ftp_port: ${{ secrets.FTP_PORT }}
