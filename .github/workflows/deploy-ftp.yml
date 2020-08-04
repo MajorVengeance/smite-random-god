@@ -42,7 +42,7 @@ jobs:
       env:
         token: ${{ secrets.TOKEN }}
     - name: Tar Files
-      run: tar -cvf dist.tar /dist
+      run: tar -cvf dist.tar dist
     - name: Upload Bundle
       uses: actions/upload-artifact@master
       with:
