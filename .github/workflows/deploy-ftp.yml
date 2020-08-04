@@ -66,5 +66,5 @@ jobs:
         port: ${{ secrets.FTP_PORT }}
         user: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local_source_dir: 'dist.tar'
-        dist_target_dir: ${{ secrets.FTP_Target }}
+        src: 'dist.tar'
+        dest: ${{ secrets.FTP_Target }}
