@@ -60,11 +60,12 @@ jobs:
         name: deploy_artifact
         path: dist.tar
     - name: Upload via FTP
-      uses: bayssmekanique/action-simple-file-upload@v1.1.3
+      uses: MajorVengeance/Ftp-Deploy-Action@v0.2.3-alpha
       with:
-        host: ${{ secrets.FTP_HOST }}
-        port: ${{ secrets.FTP_PORT }}
-        user: ${{ secrets.FTP_USER }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        src: 'dist.tar'
-        dest: ${{ secrets.FTP_Target }}
+        ftp_host: ${{ secrets.FTP_HOST }}
+        ftp_port: ${{ secrets.FTP_PORT }}
+        ftp_username: ${{ secrets.FTP_USER }}
+        ftp_password: ${{ secrets.FTP_PASSWORD }}
+        local_source_dir: 'dist.tar'
+        dist_target_dir: ${{ secrets.FTP_Target }}
+        delete: true
